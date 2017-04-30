@@ -1,0 +1,78 @@
+{
+  "categories": [
+    {
+      "name": "Device",
+      "value": ["laptop", "tablet", "mobile"]
+    },
+    {
+      "name": "OS",
+      "value": ["W7", "iOS", "Android"]
+    },
+    {
+      "name": "Browser",
+      "value": ["IE", "Edge", "Chrome", "Firefox", "Opera"]
+    }
+  ],
+  "testcases": [
+    {
+      "Device": "laptop",
+      "OS": "W7",
+      "Browser": "IE"
+	},
+    {
+      "Device": "tablet",
+      "OS": "iOS",
+      "Browser": "Edge"
+	},
+    {
+      "Device": "tablet",
+      "OS": "Android",
+      "Browser": "Chrome"
+	},
+    {
+      "Device": "laptop",
+      "OS": "W7",
+      "Browser": "Firefox"
+	},
+    {
+      "Device": "mobile",
+      "OS": "iOS",
+      "Browser": "Opera"
+	},
+    {
+      "Device": "tablet",
+      "OS": "iOS",
+      "Browser": "Edge"
+	},
+    {
+      "Device": "tablet",
+      "OS": "Android",
+      "Browser": "Chrome"
+	},
+    {
+      "Device": "tablet",
+      "OS": "Android",
+      "Browser": "Chrome"
+	},
+    {
+      "Device": "laptop",
+      "OS": "W7",
+      "Browser": "Firefox"
+	},
+    {
+      "Device": "mobile",
+      "OS": "iOS",
+      "Browser": "Opera"
+	},
+    {
+      "Device": "tablet",
+      "OS": "iOS",
+      "Browser": "Edge"
+	},
+    {
+      "Device": "tablet",
+      "OS": "Android",
+      "Browser": "Chrome"
+	}
+  ]
+}

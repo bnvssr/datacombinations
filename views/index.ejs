@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <title>Automated Test Design</title>
+  <link rel='stylesheet' type='text/css' href='assets/style.css'>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.js'></script>
+  <script src='assets/js/app.js'></script>
+</head>
+
+<body>
+  <p>
+    <input type="button" value="insert test data" onclick="insertTestData();" tabIndex='-1' />
+  </p>
+  <div id='data'>
+    <h1>Data Combination</h1>
+    <h2>Enter data:</h2>
+
+    <p>
+      <input type="button" value="add category" onclick="addCategory();" tabIndex='-1' />
+    </p>
+    <div class='category_data'>
+      <div class='cat_header'>
+        <span> +  Category name: </span>
+        <input type='text' tabIndex='1' autofocus>
+        <input type='button' class='remove' value='remove' onclick='removeCategory(this);' tabIndex='-1' />
+      </div>
+      <div class='catdata'>
+        <textarea class='data' tabIndex='2'></textarea>
+      </div>
+      <p/>
+    </div>
+    <p></p>
+  </div>
+
+  <input type="button" value="Generate test cases ..." onclick="generateTestcases();" tabIndex='-1' />
+  <p/>
+  <input type="radio" name="strength" id="strength1">Strength 1<br>
+  <input type="radio" name="strength" id="strength2" checked="checked">Strength 2
+
+
+  <div id='svg-container' />
+
+</body>
+
+<script>
+  function slide() {
+    $('div.cat_header span').off("click").click(function() {
+      $(this).text(function(_, value) {
+        return value == ' - Category name: ' ? ' + Category name: ' : ' - Category name: '
+      });
+      $(this).parent().nextUntil('div.cat_header').slideToggle(400, function() {});
+    });
+  };
+  slide();
+
+</script>
+
+</html>

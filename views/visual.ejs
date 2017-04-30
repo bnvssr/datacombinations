@@ -1,0 +1,141 @@
+<%  
+    var xCat = 175  // x-coord category, each time calculated
+    var xCatStart = xCat // x-coord category, each time calculated
+    var yCat = 15 // y-coord categories, all on the same row
+    
+    var xData = 175; // x-coord left most data-value, then always calculated
+    var yData = 60 // y-coord data-values, all on the same row
+    var xDataDiff = 80; // space between data-values
+  
+    var y1Line = 20   // top of line from category to data value
+    var y2Line = 45   // bottom of line from category to data value
+    var y1LineValue = 67   // top of data value line
+     
+    var xTestcase = 5 // x-coord of test case name
+    var xTestcaseToLineDiff = 100   // start test case line
+    var yTestcase = 115 // y-coord of first test case row
+    var yTestcaseDiff = 20 // space between test cases rows
+ 
+    var y2LineValue = yTestcase + (yTestcaseDiff * (testdata.testcases.length - 1))   // bottom of data value line
+    
+    var radius = 3  // radius of circles that identifies data value on test case line
+    
+    var nbrOfDataValues = 0 //needed to calculate width of test case line
+    for(i=0; i<testdata.categories.length; i++){
+      for(j=0; j<testdata.categories[i].value.length; j++){
+        nbrOfDataValues++
+      }  
+    }
+  
+    // calculate the offset for the 'test case circle' of the input data value
+    var offset  
+    function getX(data){
+         offset = xCatStart   // init offset 
+        // lop through categories
+        for(x=0; x<testdata.categories.length; x++){
+          //  loop through values within category
+          for(y=0; y<testdata.categories[x].value.length; y++){
+            if (data == testdata.categories[x].value[y]){
+              return offset;
+            } 
+            offset += xDataDiff   // increment offset
+          }
+        }
+      }  
+  %>
+
+  <h2>Test case visualization:</h2>
+  <svg width='100%' height=<%=y2LineValue + 15 %> >
+<!-- 
+  Categories and Data values 
+--> 
+      // loop through categories
+      <% for(i=0; i<testdata.categories.length; i++){  %>
+      
+      // calculate x-coord Category
+      <% xCat = xData + ((testdata.categories[i].value.length - 1) * xDataDiff) / 2 %>
+      
+      // per category, output category name  
+      <text class="vis_category" x="<%= xCat %>" y="<%= yCat %>" ><%= testdata.categories[i].name %></text>
+      
+      // loop through output values
+        <% for(j=0; j<testdata.categories[i].value.length; j++){  %>
+        <text class="vis_data" x="<%= xData %>" y="<%= yData %>" ><%= testdata.categories[i].value[j] %></text>
+        <line class="vis_dataline" x1="<%= xCat %>" y1="<%= y1Line %>" x2="<%= xData %>" y2="<%= y2Line %>" />	<!-- category to data -->
+        <line class="vis_dataline" x1="<%= xData %>" y1="<%= y1LineValue %>" x2="<%= xData %>" y2="<%= y2LineValue %>" />  <!-- vertical --> 	
+        // increment position for next data value
+        <% xData += xDataDiff %>
+      
+        <% }; %>  // end value loop
+      
+      <% }; %>  // end category loop
+
+<!--  
+  test cases 
+-->
+    
+      // loop through test cases
+       <% for(i=0; i<testdata.testcases.length; i++){  %>
+        <text class="testcase " x="<%=xTestcase%>" y="<%=yTestcase%>" >Test case <%= i + 1  %></text>
+      
+        // draw test case line
+        <line class="testline " x1="<%=xTestcase + xTestcaseToLineDiff %> " y1="<%=yTestcase%>" x2="<%=xCatStart + ((nbrOfDataValues-1) * xDataDiff)%>" y2="<%=yTestcase%>" />
+      
+        // draw circles for data values
+        <% for(j=0; j<testdata.categories.length; j++){  %>
+         <circle cx="<%= getX(testdata.testcases[i][testdata.categories[j].name]) %>" cy="<%=yTestcase%>" r="<%=radius%>" />  
+
+        <% }; %>  // end circles loop
+       
+        // increment offset for next test case row
+        <% yTestcase += yTestcaseDiff %> 
+      
+      <% }; %>  // end test cases loop
+	
+      Sorry, your browser does not support inline SVG.
+      
+    </svg>
+
+  <!--
+   cross ref test cases <> pairs
+-->
+  <% if(typeof testdata.pairs !== 'undefined'){ %>
+
+    <h2>Cross reference:</h2>
+    <table>
+      <tr>
+        <th></th>
+        <% for(i=0; i<testdata.pairs.length; i++){  %>
+          <th>
+            <%= testdata.pairs[i][Object.keys(testdata.pairs[i])[0]] %>,
+              <%= testdata.pairs[i][Object.keys(testdata.pairs[i])[1]] %>
+          </th>
+          <% }; %>
+      </tr>
+      <% for(i=0; i<testdata.testcases.length; i++){  %>
+        <tr>
+          <td>Test case
+            <%= i + 1  %>
+              <% var tc_val1 = testdata.testcases[i][Object.keys(testdata.testcases[i])[0]]; %>
+                <% var tc_val2 = testdata.testcases[i][Object.keys(testdata.testcases[i])[1]]; %>
+                  <% var tc_val3 = testdata.testcases[i][Object.keys(testdata.testcases[i])[2]]; %>
+          </td>
+          <% for(j=0; j<testdata.pairs.length; j++){  %>
+            <% var p_val1 = testdata.pairs[j][Object.keys(testdata.pairs[j])[0]]; %>
+              <% var p_val2 =   testdata.pairs[j][Object.keys(testdata.pairs[j])[1]]; %>
+                <td>
+                  <% if ((tc_val1 === p_val1 || tc_val2 === p_val1 || tc_val3 === p_val1 ) && (tc_val1 === p_val2 || tc_val2 === p_val2 || tc_val3 === p_val2 )) { %>
+                    <%= "X" %>
+                      <% }; %>
+                </td>
+                <% }; %>
+        </tr>
+
+        <% }; %>
+
+    </table>
+    <% }; %>
+      </br>
+      </br>
+      </br>
+      </br>

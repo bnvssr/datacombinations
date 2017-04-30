@@ -1,0 +1,18 @@
+{
+  "categories": [
+    {
+      "name": "Kleur",
+      "value": ["rood", "geel", "blauw", "paars", "zwart", "wit"]
+    },
+    {
+      "name": "Vorm",
+      "value": ["cirkel", "ellips", "driehoek", "vierkant"]
+    },
+    {
+      "name": "Effect",
+      "value": ["egaal", "gearceerd", "gestippeld"]
+    }
+  ],
+  "testcases": [
+  ]
+}

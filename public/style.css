@@ -1,0 +1,63 @@
+   .vis_category {
+     text-anchor: middle;
+     fill: blue
+   }
+   
+   .vis_data {
+     text-anchor: middle;
+     fill: blue
+   }
+   
+   .vis_dataline {
+     stroke: black;
+     stroke-width: 1
+   }
+   
+   .testcase {
+     alignment-baseline: middle
+   }
+   
+   .testline {
+     stroke: black;
+     stroke-width: 1
+   }
+   
+   circle {
+     stroke: blue;
+     stroke-width: 1;
+     fill: white
+   }
+   
+   .data {
+     width: 100%;
+     resize: vertical;
+   }
+   
+   div.cat_header {
+     width: 50%;
+     background-color: Ivory;
+     border: solid;
+     border-width: 1px;
+     padding: 4px;
+     resize: vertical;
+     cursor: pointer;
+   }
+   
+   div.catdata {
+     width: 50%;
+     min-height: 60px;
+     background-color: LemonChiffon;
+     border: solid;
+     border-width: 1px;
+     border-top: none;
+     padding: 4px;
+     resize: vertical;
+   }
+   
+   table,
+   th,
+   td {
+     border: 1px solid black;
+     border-collapse: collapse;
+     text-align: center;
+   }
