@@ -119,12 +119,14 @@
               <% var tc_val1 = testdata.testcases[i][Object.keys(testdata.testcases[i])[0]]; %>
                 <% var tc_val2 = testdata.testcases[i][Object.keys(testdata.testcases[i])[1]]; %>
                   <% var tc_val3 = testdata.testcases[i][Object.keys(testdata.testcases[i])[2]]; %>
+                    <% var tc_val4 = testdata.testcases[i][Object.keys(testdata.testcases[i])[3]]; %>
+                      <% var tc_val5 = testdata.testcases[i][Object.keys(testdata.testcases[i])[4]]; %>
           </td>
           <% for(j=0; j<testdata.pairs.length; j++){  %>
             <% var p_val1 = testdata.pairs[j][Object.keys(testdata.pairs[j])[0]]; %>
               <% var p_val2 =   testdata.pairs[j][Object.keys(testdata.pairs[j])[1]]; %>
                 <td>
-                  <% if ((tc_val1 === p_val1 || tc_val2 === p_val1 || tc_val3 === p_val1 ) && (tc_val1 === p_val2 || tc_val2 === p_val2 || tc_val3 === p_val2 )) { %>
+                  <% if ((tc_val1 === p_val1 || tc_val2 === p_val1 || tc_val3 === p_val1 || tc_val4 === p_val1 || tc_val5 === p_val1) && (tc_val1 === p_val2 || tc_val2 === p_val2 || tc_val3 === p_val2 || tc_val4 === p_val2 || tc_val5 === p_val2 )) { %>
                     <%= "X" %>
                       <% }; %>
                 </td>

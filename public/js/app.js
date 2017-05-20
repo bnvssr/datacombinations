@@ -26,7 +26,9 @@ function generateTestcases() {
   if ($('#strength2').is(':checked')) {
     url = "/tst/strength2";
   }
-
+  if ($('#strengthN').is(':checked')) {
+    url = "/tst/strengthN";
+  }
   $.ajax({
     url: url,
     type: 'POST',
