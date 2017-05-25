@@ -48,7 +48,14 @@
     };
   };
 
-  function createTestcase(pair, keys, pairs) {
+  // 
+  function getPairsFromTestcase(testcase) {
+    var pairs = [];
+    return pairs
+  }
+
+  // Starting from one set of values, find values for all 'undefined' values 
+  function createPairwiseTestcase(pair, keys, pairs) {
     var testcase = new Testcase(keys);
     var key1 = Object.keys(pair)[0];
     var key2 = Object.keys(pair)[1];
@@ -59,18 +66,28 @@
 
     // get lost of all pairs that are no candidates to complete this testcase
     var candidatePairs = pairs.filter(function (candidate) {
+
+      // no shared categories
+      if (typeof candidate[key1] === 'undefined' && typeof candidate[key2] === 'undefined') {
+        return true;
+      }
+
+      // category key1 shared, check if value matches as well
       if (typeof candidate[key1] !== 'undefined' && typeof candidate[key2] === 'undefined') {
         if (candidate[key1] === pair[key1]) {
           return true;
         }
       }
+
+      // category key2 shared, check if value matches as well
       if (typeof candidate[key2] !== 'undefined' && typeof candidate[key1] === 'undefined') {
         if (candidate[key2] === pair[key2]) {
           return true;
         }
       }
     });
-    // get pairs with the least occurrences in testcases in front  
+
+    // get pairs with the least occurrences in testcases in front of array  
     candidatePairs.sort(function (first, second) {
       if (first["inTestcase"] == second["inTestcase"])
         return 0;
@@ -80,20 +97,18 @@
         return 1;
     });
 
+    // get value for each empty key/value pair
     Object.keys(testcase).map(function (key) {
-      candidatePairs.map(function (candidatePair) {
-
-        if (typeof testcase[key] === 'undefined' && typeof candidatePair[key] !== 'undefined') {
-          testcase[key] = candidatePair[key];
-        }
-      });
+      // get a value, only if it is empty 
+      if (typeof testcase[key] === 'undefined') {
+        // get first value available from candidates
+        candidatePairs.map(function (candidatePair) {
+          if (typeof candidatePair[key] !== 'undefined') {
+            testcase[key] = candidatePair[key];
+          }
+        });
+      };
     });
-
-    //    if (Object.keys(candidatePairs[0])[0] === key1 || Object.keys(candidatePairs[0])[0] === key2) {
-    //      testcase[Object.keys(candidatePairs[0])[1]] = candidatePairs[0][Object.keys(candidatePairs[0])[1]]
-    //    } else {
-    //      testcase[Object.keys(candidatePairs[0])[0]] = candidatePairs[0][Object.keys(candidatePairs[0])[0]]
-    //    }
 
     return testcase;
   };
@@ -290,7 +305,7 @@
     var testcases = [];
     pairs.map(function (pair) {
       if (pair["inTestcase"] === 0) { // pair not yet in a testcase
-        var testcase = createTestcase(pair, keys, pairs);
+        var testcase = createPairwiseTestcase(pair, keys, pairs);
         updateInTestcases(testcase, pairs);
         testcases.push(testcase);
       }

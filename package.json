@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node spec --captureExceptions",
+    "test": "./node_modules/.bin/jasmine-node spec",
     "start": "node app.js"
   },
   "keywords": [],
@@ -16,7 +16,8 @@
     "jsonfile": "^2.4.0"
   },
   "devDependencies": {
-    "jasmine-node": "^1.14.5"
+    "jasmine-node": "^1.14.5",
+    "request": "^2.81.0"
   },
   "description": ""
 }
