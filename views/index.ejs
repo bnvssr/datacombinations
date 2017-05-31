@@ -10,6 +10,7 @@
 <body>
   <p>
     <input type="button" value="insert test data" onclick="insertTestData();" tabIndex='-1' />
+    <input type="checkbox" name="dataOnly" id="dataOnly">return testdata only
   </p>
   <div id='data'>
     <h1>Data Combination</h1>
@@ -34,9 +35,9 @@
 
   <input type="button" value="Generate test cases ..." onclick="generateTestcases();" tabIndex='-1' />
   <p/>
-  <input type="radio" name="strength" id="strength1">All values<br>
-  <input type="radio" name="strength" id="strength2" checked="">All pairs<br>
-  <input type="radio" name="strength" id="strengthN" checked="checked">All combinations
+  <input type="radio" name="strength" id="allValues">All values<br>
+  <input type="radio" name="strength" id="allPairs" checked="checked">All pairs<br>
+  <input type="radio" name="strength" id="allCombinations">All combinations
 
   <div id='svg-container' />
 

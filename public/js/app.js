@@ -19,16 +19,23 @@ function generateTestcases() {
     testdataTmp.categories.push(category);
   });
 
+  //  console.log($('#dataOnly').is(":checked"));
+
   var url = "/tst";
-  if ($('#strength1').is(':checked')) {
-    url = "/tst/strength1";
+  if ($('#allValues').is(':checked')) {
+    url += "/allValues";
   }
-  if ($('#strength2').is(':checked')) {
-    url = "/tst/strength2";
+  if ($('#allPairs').is(':checked')) {
+    url += "/allPairs";
   }
-  if ($('#strengthN').is(':checked')) {
-    url = "/tst/strengthN";
+  if ($('#allCombinations').is(':checked')) {
+    url += "/allCombinations";
   }
+
+  if ($('#dataOnly').is(":checked")) {
+    url += "/dataOnly"
+  }
+
   $.ajax({
     url: url,
     type: 'POST',
@@ -37,7 +44,7 @@ function generateTestcases() {
     dataType: 'json',
     success: function (response) {
       //      console.log('success' + JSON.stringify(response));
-      document.getElementById('svg-container').innerHTML = 'success';
+      document.getElementById('svg-container').innerHTML = "<pre>" + JSON.stringify(response, null, 2) + "</pre>";
     },
     error: function (response) {
       //      console.log('error' + JSON.stringify(response));
