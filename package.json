@@ -14,8 +14,8 @@
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "jsonfile": "^2.4.0",
-    "testcase": "file:./lib/testcase",
-    "pair": "file:./lib/pair"
+    "testcase": "file:./lib/testcase.js",
+    "pair": "file:./lib/pair.js"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",
