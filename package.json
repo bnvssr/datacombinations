@@ -13,7 +13,13 @@
     "body-parser": "^1.17.1",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
+<<<<<<< HEAD
     "jsonfile": "^2.4.0"
+=======
+    "jsonfile": "^2.4.0",
+    "testcase": "file:./lib/testcase.js",
+    "pair": "file:./lib/pair.js"
+>>>>>>> 455bd3ead6f0f31690e3342017005df48ad1da24
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",
