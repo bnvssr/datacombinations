@@ -1,5 +1,7 @@
 // allPairs.js
 
+'use strict'
+
 var Testcase = require('./lib/testcase');
 var Pair = require('./lib/pair');
 

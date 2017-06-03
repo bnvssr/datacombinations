@@ -1,3 +1,7 @@
+// allCombinations.js
+
+'use strict'
+
 var Testcase = require('./lib/testcase');
 
 function addNextValueToTestcase(incompleteTestcase, testcases, categories, currentCat) {

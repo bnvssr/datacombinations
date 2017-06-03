@@ -1,3 +1,7 @@
+// allValues.js
+
+'use strict'
+
 var Testcase = require('./lib/testcase');
 
 // determine max number of values
