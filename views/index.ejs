@@ -8,10 +8,10 @@
 </head>
 
 <body>
-  <p>
+  <div id='testdata'>
     <input type="button" value="insert test data" onclick="insertTestData();" tabIndex='-1' />
     <input type="checkbox" name="dataOnly" id="dataOnly">return testdata only
-  </p>
+  </div>
   <div id='data'>
     <h1>Data Combination</h1>
     <h2>Enter data:</h2>
@@ -44,15 +44,26 @@
 </body>
 
 <script>
-  function slide() {
-    $('div.cat_header span').off("click").click(function() {
-      $(this).text(function(_, value) {
-        return value == ' - Category name: ' ? ' + Category name: ' : ' - Category name: '
+  $(document).ready(function() {
+
+    $(document).keypress(function(e) {
+      //      if ctrl alt p pressed --> toggle button and checkbox on top of page
+      if (e.altKey && e.ctrlKey && e.which === 254) {
+        $('#testdata').toggle();
+      }
+    })
+
+    function slide() {
+      $('div.cat_header span').off("click").click(function() {
+        $(this).text(function(_, value) {
+          return value == ' - Category name: ' ? ' + Category name: ' : ' - Category name: '
+        });
+        $(this).parent().nextUntil('div.cat_header').slideToggle(400, function() {});
       });
-      $(this).parent().nextUntil('div.cat_header').slideToggle(400, function() {});
-    });
-  };
-  slide();
+    };
+    slide();
+
+  });
 
 </script>
 

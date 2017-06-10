@@ -1,5 +1,5 @@
 {
-  "name": "pairwise",
+  "name": "datacombinations",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -19,5 +19,5 @@
     "jasmine-node": "^1.14.5",
     "request": "^2.81.0"
   },
-  "description": ""
+  "description": "Automate Test Design for data combinations"
 }

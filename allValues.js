@@ -14,14 +14,15 @@ function getNbrOfTestcases(categories) {
 };
 
 exports.getTestcases = function (categories) {
+
   var testcases = [];
 
   var nbrOfTestcases = getNbrOfTestcases(categories);
-  for (i = 0; i < nbrOfTestcases; i++) {
+  for (var i = 0; i < nbrOfTestcases; i++) {
     var testcase = {};
-    for (j = 0; j < categories.length; j++) {
+    for (var j = 0; j < categories.length; j++) {
 
-      x = (i + 1) % categories[j].value.length;
+      var x = (i + 1) % categories[j].value.length;
       if (x === 0) {
         x = categories[j].value.length;
       }
