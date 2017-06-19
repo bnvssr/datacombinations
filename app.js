@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 
 var jsonParser = bodyParser.json();
 
-var data = path.normalize(__dirname) + '/data/testdata2.json'
+var data = path.normalize(__dirname) + '/data/testdataAAB.json'
 app.get('/', function (req, res) {
   res.render('index');
 });

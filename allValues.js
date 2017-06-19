@@ -14,7 +14,7 @@ function getNbrOfTestcases(categories) {
 };
 
 exports.getTestcases = function (categories) {
-
+  
   var testcases = [];
 
   var nbrOfTestcases = getNbrOfTestcases(categories);

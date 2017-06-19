@@ -87,7 +87,7 @@ function insertTestData() {
     },
     error: function (response) {
       //      console.log('error' + JSON.stringify(response));
-      console.log(response.responseText);
+      //      console.log(response.responseText);
     }
   });
 };

@@ -1,0 +1,83 @@
+{
+  "categories": [
+    {
+      "name": "HuurKoop",
+      "value": ["koop",
+                "huur"]
+    },
+    {
+      "name": "Woningtype",
+      "value": ["rijtjeswoning",
+                "flat/appartement",
+                "hoekwoning",
+                "vrijstaande woning",
+                "2 onder 1 kap",
+                "boven of benedenwoning",
+                "studentenflat/verpleegstersflat",
+                "bejaarden-verzorgings-verpleeghuis",
+                "woonboerderij",
+                "monumentaal of grachtenpand"]
+    },
+    {
+      "name": "Rietendak",
+      "value": ["nee",
+                "ja, ondergeschoten rieten dak",
+                "ja, traditioneel rieten dak"]
+    },
+    {
+      "name": "Gezinssamenstelling",
+      "value": ["gezin",
+                "alleenstaand"]
+    },
+    {
+      "name": "Kinderen",
+      "value": ["kidsja",
+                "kidsnee"]
+    },
+    {
+      "name": "Inboedelverzekeing",
+      "value": ["nee",
+                "extra uitgebreid",
+                "all risk"]
+    },
+    {
+      "name": "kostbaarheden meeverzekeren",
+      "value": ["ja",
+                "nee"]
+    },
+    {
+      "name": "Opstalverzekering",
+      "value": ["nee",
+                "extra uitgebreid",
+                "extra uitgebreid plus glas",
+                "All risk (standaard inclusief glas)"]
+    },
+    {
+      "name": "vrijwillig eigen risico",
+      "value": ["0",
+                "100",
+                "250",
+                "500"]
+    },
+    {
+      "name": "10% hoger uitkering bij schade",
+      "value": ["10ja",
+                "10nee"]
+    },
+    {
+      "name": "Aansprakelijkheid - verzekerd bedrag",
+      "value": ["1250000",
+                "2500000"]
+    },
+    {
+      "name": "vrijwillig eigen risico",
+      "value": ["0",
+                "100"]
+    },
+    {
+      "name": "rechtsbijstand",
+      "value": ["rechtsbijstandja",
+                "rechtsbijstandnee"]
+    }
+  ]
+}
