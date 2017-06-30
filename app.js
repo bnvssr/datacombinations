@@ -49,7 +49,11 @@ app.post('/tst/allValues/dataOnly', jsonParser, function (req, res) {
     testcases
   } = allValues.getTestcases(req.body.categories);
 
-  res.json([categories, testcases]);
+  //    res.json([categories, testcases]);
+  res.json({
+    "categories": categories,
+    "testcases": testcases
+  });
 });
 
 app.post('/tst/allPairs', jsonParser, function (req, res) {
@@ -77,7 +81,11 @@ app.post('/tst/allPairs/dataOnly', jsonParser, function (req, res) {
     pairs
   } = allPairs.getTestcases(req.body.categories);
 
-  res.json([categories, testcases, pairs]);
+  res.json({
+    "categories": categories,
+    "testcases": testcases,
+    "pairs": pairs
+  });
 
 });
 
@@ -102,7 +110,10 @@ app.post('/tst/allCombinations/dataOnly', jsonParser, function (req, res) {
     testcases
   } = allCombinations.getTestcases(req.body.categories);
 
-  res.json([categories, testcases]);
+  res.json({
+    "categories": categories,
+    "testcases": testcases
+  });
 
 });
 

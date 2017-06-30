@@ -24,6 +24,7 @@ function addNextValueToTestcase(incompleteTestcase, testcases, categories, curre
         testcase[key] = incompleteTestcase[key];
       });
       testcases.push(testcase);
+
     });
   }
 };
