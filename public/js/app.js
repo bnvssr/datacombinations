@@ -19,8 +19,6 @@ function generateTestcases() {
     testdataTmp.categories.push(category);
   });
 
-  //  console.log($('#dataOnly').is(":checked"));
-
   var url = "/tst";
   if ($('#allValues').is(':checked')) {
     url += "/allValues";
@@ -32,8 +30,10 @@ function generateTestcases() {
     url += "/allCombinations";
   }
 
-  if ($('#dataOnly').is(":checked")) {
-    url += "/dataOnly"
+  if ($('#json').is(":checked")) {
+    url += "/json"
+  } else if ($('#xml').is(":checked")) {
+    url += "/xml"
   }
 
   $.ajax({

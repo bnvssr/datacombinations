@@ -33,7 +33,7 @@ exports.getTestcases = function (categories) {
   };
 
   return {
-    categories: categories,
-    testcases: testcases
+    "categories": categories,
+    "testcases": testcases
   };
 };

@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 
 var jsonParser = bodyParser.json();
 
-var data = path.normalize(__dirname) + '/data/testdataAAB.json'
+var data = path.normalize(__dirname) + '/data/testdata3.json'
 app.get('/', function (req, res) {
   res.render('index');
 });
@@ -42,7 +42,7 @@ app.post('/tst/allValues', jsonParser, function (req, res) {
   });
 });
 
-app.post('/tst/allValues/dataOnly', jsonParser, function (req, res) {
+app.post('/tst/allValues/json', jsonParser, function (req, res) {
 
   let {
     categories,
@@ -54,6 +54,29 @@ app.post('/tst/allValues/dataOnly', jsonParser, function (req, res) {
     "categories": categories,
     "testcases": testcases
   });
+});
+
+app.post('/tst/allValues/xml', jsonParser, function (req, res) {
+
+  //  let {
+  //    categories,
+  //    testcases
+  //  } = allValues.getTestcases(req.body.categories);
+  //
+  //  // make sure every testcase name/value pair has a name
+  //  var testcases2 = testcases.map(function (testcase) {
+  //    return ({
+  //      "testcase": testcase
+  //    });
+  //  });
+  //
+  //  // convert json to xml
+  //  var xml = jsonxml({
+  //    "testcases": testcases2
+  //  })
+  //
+  //  res.header('Content-Type', 'text/xml').send(xml);
+
 });
 
 app.post('/tst/allPairs', jsonParser, function (req, res) {
@@ -73,7 +96,7 @@ app.post('/tst/allPairs', jsonParser, function (req, res) {
 
 });
 
-app.post('/tst/allPairs/dataOnly', jsonParser, function (req, res) {
+app.post('/tst/allPairs/json', jsonParser, function (req, res) {
 
   let {
     categories,
@@ -89,6 +112,37 @@ app.post('/tst/allPairs/dataOnly', jsonParser, function (req, res) {
 
 });
 
+app.post('/tst/allPairs/xml', jsonParser, function (req, res) {
+
+  //  let {
+  //    categories,
+  //    testcases,
+  //    pairs
+  //  } = allPairs.getTestcases(req.body.categories);
+  //
+  //  // make sure every testcase name/value pair has a name
+  //  var testcases2 = testcases.map(function (testcase) {
+  //    return ({
+  //      "testcase": testcase
+  //    });
+  //  });
+  //
+  //  // make sure every pair name/value pair has a name
+  //  var pairs2 = pairs.map(function (pair) {
+  //    return ({
+  //      "pair": pair
+  //    });
+  //  });
+  //
+  //  // convert json to xml
+  //  var xml = jsonxml({
+  //    "testcases": testcases2
+  //  });
+  //
+  //  res.header('Content-Type', 'text/xml').send(xml);
+
+});
+
 app.post('/tst/allCombinations', jsonParser, function (req, res) {
 
   let {
@@ -96,24 +150,72 @@ app.post('/tst/allCombinations', jsonParser, function (req, res) {
     testcases
   } = allCombinations.getTestcases(req.body.categories);
 
-  req.body["testcases"] = testcases;
-  res.render('visual', {
-    testdata: req.body
-  });
+  if (testcases.length > 100000) {
+    var message = "too many testcases (" + testcases.length + ")";
+    res.json({
+      "error": message
+    })
+  } else {
+    req.body["testcases"] = testcases;
+    res.render('visual', {
+      testdata: req.body
+    });
+  }
 
 });
 
-app.post('/tst/allCombinations/dataOnly', jsonParser, function (req, res) {
+app.post('/tst/allCombinations/json', jsonParser, function (req, res) {
 
   let {
     categories,
     testcases
   } = allCombinations.getTestcases(req.body.categories);
 
-  res.json({
-    "categories": categories,
-    "testcases": testcases
-  });
+  if (testcases.length > 100000) {
+    var message = "too many testcases (" + testcases.length + ")";
+    res.json({
+      "error": message
+    })
+  } else {
+    res.json({
+      "categories": categories,
+      "testcases": testcases
+    });
+  }
+
+});
+
+app.post('/tst/allCombinations/xml', jsonParser, function (req, res) {
+
+  //  let {
+  //    categories,
+  //    testcases
+  //  } = allCombinations.getTestcases(req.body.categories);
+  //
+  //  if (testcases.length > 100000) {
+  //    var message = "too many testcases ("
+  //    message = message.concat(testcases.length);
+  //    message = message.concat(")");
+  //    console.log(message);
+  //    res.json({
+  //      "error": message
+  //    })
+  //  } else {
+  //
+  //    // make sure every testcase name/value pair has a name
+  //    var testcases2 = testcases.map(function (testcase) {
+  //      return ({
+  //        "testcase": testcase
+  //      });
+  //    });
+  //
+  //    // convert json to xml
+  //    var xml = jsonxml({
+  //      "testcases": testcases2
+  //    })
+  //
+  //    res.header('Content-Type', 'text/xml').send(xml);
+  //  }
 
 });
 
