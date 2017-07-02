@@ -7,6 +7,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 var jsonfile = require('jsonfile');
+var jsonxml = require('jsontoxml');
 
 var Pair = require('./lib/pair');
 var Testcase = require('./lib/testcase');
@@ -24,7 +25,7 @@ app.set('view engine', 'ejs');
 
 var jsonParser = bodyParser.json();
 
-var data = path.normalize(__dirname) + '/data/testdataAAB.json'
+var data = path.normalize(__dirname) + '/data/testdata3.json'
 app.get('/', function (req, res) {
   res.render('index');
 });
@@ -58,24 +59,23 @@ app.post('/tst/allValues/json', jsonParser, function (req, res) {
 
 app.post('/tst/allValues/xml', jsonParser, function (req, res) {
 
-  //  let {
-  //    categories,
-  //    testcases
-  //  } = allValues.getTestcases(req.body.categories);
-  //
-  //  // make sure every testcase name/value pair has a name
-  //  var testcases2 = testcases.map(function (testcase) {
-  //    return ({
-  //      "testcase": testcase
-  //    });
-  //  });
-  //
-  //  // convert json to xml
-  //  var xml = jsonxml({
-  //    "testcases": testcases2
-  //  })
-  //
-  //  res.header('Content-Type', 'text/xml').send(xml);
+  let {
+    categories,
+    testcases
+  } = allValues.getTestcases(req.body.categories);
+
+  // make sure every testcase name/value pair has a name
+  var testcases2 = testcases.map(function (testcase) {
+    return ({
+      "testcase": testcase
+    });
+  });
+
+  // convert json to xml
+  var xml = jsonxml({
+    "testcases": testcases2
+  });
+  res.header('Content-Type', 'text/xml').send(xml);
 
 });
 
@@ -114,32 +114,32 @@ app.post('/tst/allPairs/json', jsonParser, function (req, res) {
 
 app.post('/tst/allPairs/xml', jsonParser, function (req, res) {
 
-  //  let {
-  //    categories,
-  //    testcases,
-  //    pairs
-  //  } = allPairs.getTestcases(req.body.categories);
-  //
-  //  // make sure every testcase name/value pair has a name
-  //  var testcases2 = testcases.map(function (testcase) {
-  //    return ({
-  //      "testcase": testcase
-  //    });
-  //  });
-  //
-  //  // make sure every pair name/value pair has a name
-  //  var pairs2 = pairs.map(function (pair) {
-  //    return ({
-  //      "pair": pair
-  //    });
-  //  });
-  //
-  //  // convert json to xml
-  //  var xml = jsonxml({
-  //    "testcases": testcases2
-  //  });
-  //
-  //  res.header('Content-Type', 'text/xml').send(xml);
+    let {
+      categories,
+      testcases,
+      pairs
+    } = allPairs.getTestcases(req.body.categories);
+
+    // make sure every testcase name/value pair has a name
+    var testcases2 = testcases.map(function (testcase) {
+      return ({
+        "testcase": testcase
+      });
+    });
+
+    // make sure every pair name/value pair has a name
+    var pairs2 = pairs.map(function (pair) {
+      return ({
+        "pair": pair
+      });
+    });
+
+    // convert json to xml
+    var xml = jsonxml({
+      "testcases": testcases2
+    });
+
+    res.header('Content-Type', 'text/xml').send(xml);
 
 });
 
@@ -187,36 +187,29 @@ app.post('/tst/allCombinations/json', jsonParser, function (req, res) {
 
 app.post('/tst/allCombinations/xml', jsonParser, function (req, res) {
 
-  //  let {
-  //    categories,
-  //    testcases
-  //  } = allCombinations.getTestcases(req.body.categories);
-  //
-  //  if (testcases.length > 100000) {
-  //    var message = "too many testcases ("
-  //    message = message.concat(testcases.length);
-  //    message = message.concat(")");
-  //    console.log(message);
-  //    res.json({
-  //      "error": message
-  //    })
-  //  } else {
-  //
-  //    // make sure every testcase name/value pair has a name
-  //    var testcases2 = testcases.map(function (testcase) {
-  //      return ({
-  //        "testcase": testcase
-  //      });
-  //    });
-  //
-  //    // convert json to xml
-  //    var xml = jsonxml({
-  //      "testcases": testcases2
-  //    })
-  //
-  //    res.header('Content-Type', 'text/xml').send(xml);
-  //  }
+  let {
+    categories,
+    testcases
+  } = allCombinations.getTestcases(req.body.categories);
 
+  if (testcases.length > 100000) {
+    var message = "<error>too many testcases (" + testcases.length + ")</error>";
+    res.header('Content-Type', 'text/xml').send(xml);
+  } else {
+    // make sure every testcase name/value pair has a name
+    var testcases2 = testcases.map(function (testcase) {
+      return ({
+        "testcase": testcase
+      });
+    });
+
+    // convert json to xml
+    var xml = jsonxml({
+      "testcases": testcases2
+    })
+
+    res.header('Content-Type', 'text/xml').send(xml);
+  }
 });
 
 app.get('/visual', function (req, res) {
