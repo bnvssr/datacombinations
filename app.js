@@ -25,7 +25,7 @@ app.set('view engine', 'ejs');
 
 var jsonParser = bodyParser.json();
 
-var data = path.normalize(__dirname) + '/data/testdata3.json'
+var data = path.normalize(__dirname) + '/data/testdataAAB.json'
 app.get('/', function (req, res) {
   res.render('index');
 });
@@ -113,34 +113,33 @@ app.post('/tst/allPairs/json', jsonParser, function (req, res) {
 });
 
 app.post('/tst/allPairs/xml', jsonParser, function (req, res) {
-
-    let {
-      categories,
-      testcases,
-      pairs
-    } = allPairs.getTestcases(req.body.categories);
-
-    // make sure every testcase name/value pair has a name
-    var testcases2 = testcases.map(function (testcase) {
-      return ({
-        "testcase": testcase
-      });
-    });
-
-    // make sure every pair name/value pair has a name
-    var pairs2 = pairs.map(function (pair) {
-      return ({
-        "pair": pair
-      });
-    });
-
-    // convert json to xml
-    var xml = jsonxml({
-      "testcases": testcases2
-    });
-
-    res.header('Content-Type', 'text/xml').send(xml);
-
+  //
+  //    let {
+  //      categories,
+  //      testcases,
+  //      pairs
+  //    } = allPairs.getTestcases(req.body.categories);
+  //
+  //    // make sure every testcase name/value pair has a name
+  //    var testcases2 = testcases.map(function (testcase) {
+  //      return ({
+  //        "testcase": testcase
+  //      });
+  //    });
+  //
+  //    // make sure every pair name/value pair has a name
+  //    var pairs2 = pairs.map(function (pair) {
+  //      return ({
+  //        "pair": pair
+  //      });
+  //    });
+  //
+  //    // convert json to xml
+  //    var xml = jsonxml({
+  //      "testcases": testcases2
+  //    });
+  //
+  //    res.header('Content-Type', 'text/xml').send(xml);
 });
 
 app.post('/tst/allCombinations', jsonParser, function (req, res) {
