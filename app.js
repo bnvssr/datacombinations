@@ -52,32 +52,32 @@ app.post('/tst/allValues/json', jsonParser, function (req, res) {
 
   //    res.json([categories, testcases]);
   res.json({
-    "categories": categories,
+    //    "categories": categories,
     "testcases": testcases
   });
 });
 
-app.post('/tst/allValues/xml', jsonParser, function (req, res) {
-
-  let {
-    categories,
-    testcases
-  } = allValues.getTestcases(req.body.categories);
-
-  // make sure every testcase name/value pair has a name
-  var testcases2 = testcases.map(function (testcase) {
-    return ({
-      "testcase": testcase
-    });
-  });
-
-  // convert json to xml
-  var xml = jsonxml({
-    "testcases": testcases2
-  });
-  res.header('Content-Type', 'text/xml').send(xml);
-
-});
+//app.post('/tst/allValues/xml', jsonParser, function (req, res) {
+//
+//  let {
+//    categories,
+//    testcases
+//  } = allValues.getTestcases(req.body.categories);
+//
+//  // make sure every testcase name/value pair has a name
+//  var testcases2 = testcases.map(function (testcase) {
+//    return ({
+//      "testcase": testcase
+//    });
+//  });
+//
+//  // convert json to xml
+//  var xml = jsonxml({
+//    "testcases": testcases2
+//  });
+//  res.header('Content-Type', 'text/xml').send(xml);
+//
+//});
 
 app.post('/tst/allPairs', jsonParser, function (req, res) {
 
@@ -105,42 +105,41 @@ app.post('/tst/allPairs/json', jsonParser, function (req, res) {
   } = allPairs.getTestcases(req.body.categories);
 
   res.json({
-    "categories": categories,
-    "testcases": testcases,
-    "pairs": pairs
+    //    "categories": categories,
+    "testcases": testcases
+    //    "pairs": pairs
   });
 
 });
 
-app.post('/tst/allPairs/xml', jsonParser, function (req, res) {
-  //
-  //    let {
-  //      categories,
-  //      testcases,
-  //      pairs
-  //    } = allPairs.getTestcases(req.body.categories);
-  //
-  //    // make sure every testcase name/value pair has a name
-  //    var testcases2 = testcases.map(function (testcase) {
-  //      return ({
-  //        "testcase": testcase
-  //      });
-  //    });
-  //
-  //    // make sure every pair name/value pair has a name
-  //    var pairs2 = pairs.map(function (pair) {
-  //      return ({
-  //        "pair": pair
-  //      });
-  //    });
-  //
-  //    // convert json to xml
-  //    var xml = jsonxml({
-  //      "testcases": testcases2
-  //    });
-  //
-  //    res.header('Content-Type', 'text/xml').send(xml);
-});
+//app.post('/tst/allPairs/xml', jsonParser, function (req, res) {
+//  let {
+//    categories,
+//    testcases,
+//    pairs
+//  } = allPairs.getTestcases(req.body.categories);
+//
+//  // make sure every testcase name/value pair has a name
+//  var testcases2 = testcases.map(function (testcase) {
+//    return ({
+//      "testcase": testcase
+//    });
+//  });
+//
+//  // make sure every pair name/value pair has a name
+//  var pairs2 = pairs.map(function (pair) {
+//    return ({
+//      "pair": pair
+//    });
+//  });
+//
+//  // convert json to xml
+//  var xml = jsonxml({
+//    "testcases": testcases2
+//  });
+//
+//  res.header('Content-Type', 'text/xml').send(xml);
+//});
 
 app.post('/tst/allCombinations', jsonParser, function (req, res) {
 
@@ -177,40 +176,39 @@ app.post('/tst/allCombinations/json', jsonParser, function (req, res) {
     })
   } else {
     res.json({
-      "categories": categories,
+      //      "categories": categories,
       "testcases": testcases
     });
   }
 
 });
 
-app.post('/tst/allCombinations/xml', jsonParser, function (req, res) {
-
-  let {
-    categories,
-    testcases
-  } = allCombinations.getTestcases(req.body.categories);
-
-  if (testcases.length > 100000) {
-    var message = "<error>too many testcases (" + testcases.length + ")</error>";
-    res.header('Content-Type', 'text/xml').send(xml);
-  } else {
-    // make sure every testcase name/value pair has a name
-    var testcases2 = testcases.map(function (testcase) {
-      return ({
-        "testcase": testcase
-      });
-    });
-
-    // convert json to xml
-    var xml = jsonxml({
-      "testcases": testcases2
-    })
-
-    res.header('Content-Type', 'text/xml').send(xml);
-  }
-});
-
+//app.post('/tst/allCombinations/xml', jsonParser, function (req, res) {
+//
+//  let {
+//    categories,
+//    testcases
+//  } = allCombinations.getTestcases(req.body.categories);
+//
+//  if (testcases.length > 100000) {
+//    var message = "<error>too many testcases (" + testcases.length + ")</error>";
+//    res.header('Content-Type', 'text/xml').send(xml);
+//  } else {
+//    // make sure every testcase name/value pair has a name
+//    var testcases2 = testcases.map(function (testcase) {
+//      return ({
+//        "testcase": testcase
+//      });
+//    });
+//
+//    // convert json to xml
+//    var xml = jsonxml({
+//      "testcases": testcases2
+//    })
+//
+//    res.header('Content-Type', 'text/xml').send(xml);
+//  }
+//});
 app.get('/visual', function (req, res) {
   jsonfile.readFile(data, function (err, tdata) {
     if (err !== null) {} else {
