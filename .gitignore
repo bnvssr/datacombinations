@@ -4,3 +4,8 @@ jspm_packages
 
 Procfile
 spec
+
+# data files 
+data/*.xml
+data/*.js
+data/tdata*.*
