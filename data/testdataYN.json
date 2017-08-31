@@ -1,0 +1,17 @@
+{
+  "categories": [
+    {
+      "name": "Cat1",
+      "value": ["Yes", "No"]
+    }, {
+      "name": "Cat2",
+      "value": ["Yes", "No"]
+    }, {
+      "name": "Cat3",
+      "value": ["Yes", "No"]
+    }, {
+      "name": "Cat4",
+      "value": ["Yes", "No"]
+    }
+  ]
+}

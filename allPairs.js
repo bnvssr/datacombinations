@@ -83,6 +83,7 @@ function getPairs(categories) {
       categories[i].value.forEach(function (val1) { // loop through all values in 'outer loop' category
         categories[j].value.forEach(function (val2) { // loop through all values in 'inner loop' values
           var pair = new Pair(categories[j].name, val2, categories[i].name, val1);
+          //          console.log(pair);
           pairs.push(pair); // save all pairs for crossref pairs <=> testcases
         });
       });
@@ -103,12 +104,14 @@ exports.getTestcases = function (categories) {
   var keys = getKeys(categories);
 
   pairs = getPairs(categories);
+
   pairs.map(function (pair) {
     // if a pair is not yet in a testcase ==>  create a testcase
     if (pair.getNbrInTestcase() === 0) {
       var testcase = createPairwiseTestcase(pair, keys, pairs);
 
       // add one to 'inTestcase' attribute for all pairs in testcase
+
       pair.updateNbrInTestcase(testcase, pairs, 1);
 
       testcases.push(testcase);
