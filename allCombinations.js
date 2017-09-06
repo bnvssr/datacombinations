@@ -18,11 +18,15 @@ function addNextValueToTestcase(incompleteTestcase, testcases, categories, curre
       incompleteTestcase[categories[currentCat].name] = val;
       //      incompleteTestcase["inTestcases"] = 0;
 
-      var testcase = {};
+      var testdata = {};
       var keys = Object.keys(incompleteTestcase);
       keys.forEach(function (key, index) {
-        testcase[key] = incompleteTestcase[key];
+        testdata[key] = incompleteTestcase[key];
       });
+
+      var testcase = {
+        "testcase": testdata
+      };
       testcases.push(testcase);
 
     });

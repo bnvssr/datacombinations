@@ -19,7 +19,7 @@ exports.getTestcases = function (categories) {
 
   var nbrOfTestcases = getNbrOfTestcases(categories);
   for (var i = 0; i < nbrOfTestcases; i++) {
-    var testcase = {};
+    var testdata = {};
     for (var j = 0; j < categories.length; j++) {
 
       var x = (i + 1) % categories[j].value.length;
@@ -27,7 +27,10 @@ exports.getTestcases = function (categories) {
         x = categories[j].value.length;
       }
 
-      testcase[categories[j].name] = categories[j].value[x - 1];
+      testdata[categories[j].name] = categories[j].value[x - 1];
+    };
+    var testcase = {
+      "testcase": testdata
     };
     testcases.push(testcase);
   };
