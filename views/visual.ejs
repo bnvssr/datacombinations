@@ -30,12 +30,20 @@
     // calculate the offset for the 'test case circle' of the input data value
     var offset  
     function getX(data){
+		
+//		console.log("data", data);
+		
          offset = xCatStart   // init offset 
-        // lop through categories
+        // loop through categories
         for(x=0; x<testdata.categories.length; x++){
           //  loop through values within category
           for(y=0; y<testdata.categories[x].value.length; y++){
-            if (data == testdata.categories[x].value[y]){
+			  
+//			console.log(testdata.categories[x].name);  
+//			console.log(testdata.categories[x].value[y]);  
+//			console.log("----");  
+			  
+            if ((data[0] == testdata.categories[x].name) && (data[1] == testdata.categories[x].value[y])){
               return offset;
             } 
             offset += xDataDiff   // increment offset
@@ -44,8 +52,8 @@
       }  
   %>
 
-  <h2>Test case visualization:</h2>
-  <svg width='100%' height=<%=y2LineValue + 15 %> >
+	<h2>Test case visualization:</h2>
+	<svg width='100%' height=<%=y2LineValue + 15 %> >
 <!-- 
   Categories and Data values 
 --> 
@@ -83,7 +91,10 @@
       
         // draw circles for data values
         <% for(j=0; j<testdata.categories.length; j++){  %>
-         <circle cx="<%= getX(testdata.testcases[i][testdata.categories[j].name]) %>" cy="<%=yTestcase%>" r="<%=radius%>" />  
+		
+		
+         <circle cx="<%= getX([testdata.categories[j].name, testdata.testcases[i]["testcase"][testdata.categories[j].name]]) %>" cy="<%=yTestcase%>" r="<%=radius%>" />  
+>
 
         <% }; %>  // end circles loop
        
@@ -96,49 +107,121 @@
       
     </svg>
 
-  <!--
+	<!--
    cross ref test cases <> pairs
 -->
-  <% if(typeof testdata.pairs !== 'undefined'){ %>
+	<% if(typeof testdata.pairs !== 'undefined'){ %>
 
-    <h2>Cross reference:</h2>
-    <table>
-      <tr>
-        <th></th>
-        <% for(i=0; i<testdata.pairs.length; i++){  %>
-          <th>
-            <%= testdata.pairs[i][Object.keys(testdata.pairs[i])[0]] %>,
-              <%= testdata.pairs[i][Object.keys(testdata.pairs[i])[1]] %>
-                <%= testdata.pairs[i].inTestcase %>
-          </th>
-          <% }; %>
-      </tr>
-      <% for(i=0; i<testdata.testcases.length; i++){  %>
-        <tr>
-          <td>Test case
-            <%= i + 1  %>
-              <% var tc_val1 = testdata.testcases[i][Object.keys(testdata.testcases[i])[0]]; %>
-                <% var tc_val2 = testdata.testcases[i][Object.keys(testdata.testcases[i])[1]]; %>
-                  <% var tc_val3 = testdata.testcases[i][Object.keys(testdata.testcases[i])[2]]; %>
-                    <% var tc_val4 = testdata.testcases[i][Object.keys(testdata.testcases[i])[3]]; %>
-                      <% var tc_val5 = testdata.testcases[i][Object.keys(testdata.testcases[i])[4]]; %>
-          </td>
-          <% for(j=0; j<testdata.pairs.length; j++){  %>
-            <% var p_val1 = testdata.pairs[j][Object.keys(testdata.pairs[j])[0]]; %>
-              <% var p_val2 =   testdata.pairs[j][Object.keys(testdata.pairs[j])[1]]; %>
-                <td>
-                  <% if ((tc_val1 === p_val1 || tc_val2 === p_val1 || tc_val3 === p_val1 || tc_val4 === p_val1 || tc_val5 === p_val1) && (tc_val1 === p_val2 || tc_val2 === p_val2 || tc_val3 === p_val2 || tc_val4 === p_val2 || tc_val5 === p_val2 )) { %>
-                    <%= "X" %>
-                      <% }; %>
-                </td>
-                <% }; %>
-        </tr>
+		<h2>Cross reference:</h2>
+		<table>
+			<tr>
+				<th></th>
+				<% for(i=0; i<testdata.pairs.length; i++){  %>
+					<th>
+						<%= Object.keys(testdata.pairs[i])[0] %>:
+							<%= testdata.pairs[i][Object.keys(testdata.pairs[i])[0]] %>,
+								<%= [Object.keys(testdata.pairs[i])[1]] %>:
+									<%= testdata.pairs[i][Object.keys(testdata.pairs[i])[1]] %><br/>
+										<%= testdata.pairs[i].inTestcase %>
+					</th>
+					<% }; %>
+			</tr>
+			<% for(i=0; i<testdata.testcases.length; i++){  %>
+				<tr>
+					<td>Test case
+						<%= i + 1  %>
+							<% 
+//						console.log("Test case", i+1);
+						
+						var tc_nam1 = Object.keys(testdata.testcases[i]["testcase"])[0]; 
+						var tc_val1 = testdata.testcases[i]["testcase"][tc_nam1]; 
+//						console.log(tc_nam1, tc_val1);
+						
+						var tc_nam2 = Object.keys(testdata.testcases[i]["testcase"])[1]; 
+						var tc_val2 = testdata.testcases[i]["testcase"][tc_nam2]; 
+//						console.log(tc_nam2, tc_val2);
+						
+						var tc_nam3 = Object.keys(testdata.testcases[i]["testcase"])[2]; 
+						var tc_val3 = testdata.testcases[i]["testcase"][tc_nam3]; 
+//						console.log(tc_nam3, tc_val3);
+						
+						var tc_nam4 = Object.keys(testdata.testcases[i]["testcase"])[3]; 
+						var tc_val4 = testdata.testcases[i]["testcase"][tc_nam4]; 
+//						console.log(tc_nam4, tc_val4);
+					
+						var tc_nam5 = Object.keys(testdata.testcases[i]["testcase"])[4]; 
+						var tc_val5 = testdata.testcases[i]["testcase"][tc_nam5]; 
+//						console.log(tc_nam5, tc_val5);
+						%>
+					</td>
+					<% for(j=0; j<testdata.pairs.length; j++){  %>
+						<% 
+						var p_nam1 = Object.keys(testdata.pairs[j])[0];
+						var p_val1 = testdata.pairs[j][p_nam1];
+//						console.log(p_nam1, p_val1);
+					
+						var p_nam2 = Object.keys(testdata.pairs[j])[1]; 
+						var p_val2 = testdata.pairs[j][p_nam2]; 
+//						console.log(p_nam2, p_val2);
+					
+//						console.log("---");
+						%>
+							<td>
+								<%= tc_nam1 === p_nam1 %>
+									<%= tc_nam2 === p_nam2 %>
+										<% 
+								
+//									console.log((
+//										(
+//										 (tc_nam1 === p_nam1) && 
+//										 (tc_val1 === p_val1 || 
+//										 tc_val2 === p_val1 || 
+//										 tc_val3 === p_val1 || 
+//										 tc_val4 === p_val1 || 		
+//										 tc_val5 === p_val1)
+//										) 
+//										 &&
+//										(
+//										 (tc_nam2 === p_nam2) &&
+//										 (tc_val1 === p_val2 || 
+//										 tc_val2 === p_val2 || 
+//										 tc_val3 === p_val2 || 
+//										 tc_val4 === p_val2 || 
+//										 tc_val5 === p_val2 )
+//										)
+//									   ));
+								
+									if (
+										(
+										 (tc_nam1 === p_nam1) && 
+										 (tc_val1 === p_val1 || 
+										 tc_val2 === p_val1 || 
+										 tc_val3 === p_val1 || 
+										 tc_val4 === p_val1 || 		
+										 tc_val5 === p_val1)
+										) 
+										 &&
+										(
+										 (tc_nam2 === p_nam2) &&
+										 (tc_val1 === p_val2 || 
+										 tc_val2 === p_val2 || 
+										 tc_val3 === p_val2 || 
+										 tc_val4 === p_val2 || 
+										 tc_val5 === p_val2 )
+										)
+									   ) { 
+									%>
+											<%= "X" %>
+												<% }; %>
+							</td>
+							<% }; %>
+				</tr>
 
-        <% }; %>
+				<% }; %>
 
-    </table>
-    <% }; %>
-      </br>
-      </br>
-      </br>
-      </br>
+		</table>
+		<% }; %>
+			</br>
+			</br>
+			</br>
+			</br>

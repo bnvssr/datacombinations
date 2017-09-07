@@ -124,7 +124,7 @@ exports.getTestcases = function (categories) {
 	testcases = testcases.filter(function (testcase) {
 
 		var keepTestcase = false;
-		console.log(testcase["testcase"]);
+		//		console.log(testcase["testcase"]);
 
 		var pairsInTestcase = testcase["testcase"].getPairsInTestcase();
 		//    var pairsInTestcase = testcase.getPairsInTestcase();
