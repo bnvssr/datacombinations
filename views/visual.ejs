@@ -167,52 +167,17 @@
 //						console.log("---");
 						%>
 							<td>
-								<%= tc_nam1 === p_nam1 %>
-									<%= tc_nam2 === p_nam2 %>
-										<% 
-								
-//									console.log((
-//										(
-//										 (tc_nam1 === p_nam1) && 
-//										 (tc_val1 === p_val1 || 
-//										 tc_val2 === p_val1 || 
-//										 tc_val3 === p_val1 || 
-//										 tc_val4 === p_val1 || 		
-//										 tc_val5 === p_val1)
-//										) 
-//										 &&
-//										(
-//										 (tc_nam2 === p_nam2) &&
-//										 (tc_val1 === p_val2 || 
-//										 tc_val2 === p_val2 || 
-//										 tc_val3 === p_val2 || 
-//										 tc_val4 === p_val2 || 
-//										 tc_val5 === p_val2 )
-//										)
-//									   ));
-								
-									if (
-										(
-										 (tc_nam1 === p_nam1) && 
-										 (tc_val1 === p_val1 || 
-										 tc_val2 === p_val1 || 
-										 tc_val3 === p_val1 || 
-										 tc_val4 === p_val1 || 		
-										 tc_val5 === p_val1)
-										) 
-										 &&
-										(
-										 (tc_nam2 === p_nam2) &&
-										 (tc_val1 === p_val2 || 
-										 tc_val2 === p_val2 || 
-										 tc_val3 === p_val2 || 
-										 tc_val4 === p_val2 || 
-										 tc_val5 === p_val2 )
-										)
-									   ) { 
-									%>
-											<%= "X" %>
-												<% }; %>
+								<% 
+									if (((testdata.testcases[i]["testcase"][p_nam1] !== 'undefined') && (
+										testdata.testcases[i]["testcase"][p_nam1] === p_val1)) &&
+									   ((testdata.testcases[i]["testcase"][p_nam2] !== 'undefined') && (
+										testdata.testcases[i]["testcase"][p_nam2] === p_val2))
+									   ){
+// 										console.log(testdata.testcases[i]["testcase"]); 
+//										console.log(testdata.pairs[j]);									
+								%>
+									<%= "X" %>
+										<% }; %>
 							</td>
 							<% }; %>
 				</tr>
