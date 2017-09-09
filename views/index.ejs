@@ -1,62 +1,63 @@
 <html>
 
 <head>
-	<title>Automated Test Design</title>
-	<link rel='stylesheet' type='text/css' href='assets/style.css'>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.js'></script>
-	<script src='assets/js/app.js'></script>
+  <title>Automated Test Design</title>
+  <link rel='stylesheet' type='text/css' href='assets/style.css'>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.js'></script>
+  <script src='assets/js/app.js'></script>
+  <link rel="icon" type="image/png" href="assets/atd.png" />
 </head>
 
 <body>
-	<div id='testdata'>
-		<input type="button" value="insert test data" onclick="insertTestData();" tabIndex='-1' />
-		<input type="checkbox" name="json" id="json">return json
-		<input type="checkbox" name="xml" id="xml">return xml
-	</div>
-	<div id='data'>
-		<h1>Data Combination</h1>
-		<h2>Enter data:</h2>
+  <div id='testdata'>
+    <input type="button" value="insert test data" onclick="insertTestData();" tabIndex='-1'>
+    <input type="checkbox" name="json" id="json">return json
+    <input type="checkbox" name="xml" id="xml">return xml
+  </div>
+  <div id='data'>
+    <h1>Data Combination</h1>
+    <h2>Enter data:</h2>
 
-		<p>
-			<input type="button" value="add category" onclick="addCategory();" tabIndex='-1' />
-		</p>
-		<div class='category_data'>
-			<div class='cat_header'>
-				<span> +  Category name: </span>
-				<input type='text' tabIndex='1' autofocus>
-				<input type='button' class='remove' value='remove' onclick='removeCategory(this);' tabIndex='-1' />
-			</div>
-			<div class='catdata'>
-				<textarea class='data' tabIndex='2'></textarea>
-			</div>
-			<p/>
-		</div>
-		<p></p>
-	</div>
+    <p>
+      <input type="button" value="add category" onclick="addCategory();" tabIndex='-1' />
+    </p>
+    <div class='category_data'>
+      <div class='cat_header'>
+        <span> +  Category name: </span>
+        <input type='text' tabIndex='1' autofocus>
+        <input type='button' class='remove' value='remove' onclick='removeCategory(this);' tabIndex='-1' />
+      </div>
+      <div class='catdata'>
+        <textarea class='data' tabIndex='2'></textarea>
+      </div>
+      <p/>
+    </div>
+    <p></p>
+  </div>
 
-	<input type="button" value="Generate test cases ..." onclick="generateTestcases();" tabIndex='-1' />
-	<p/>
-	<input type="radio" name="strength" id="allValues">All values<br>
-	<input type="radio" name="strength" id="allPairs" checked="checked">All pairs<br>
-	<input type="radio" name="strength" id="allCombinations">All combinations
+  <input type="button" value="Generate test cases ..." onclick="generateTestcases();" tabIndex='-1' />
+  <p/>
+  <input type="radio" name="strength" id="allValues">All values<br>
+  <input type="radio" name="strength" id="allPairs" checked="checked">All pairs<br>
+  <input type="radio" name="strength" id="allCombinations">All combinations
 
-	<div id='svg-container'></div>
+  <div id='svg-container'></div>
 
-	<div id='xmlPlaceholder'></div>
+  <div id='xmlPlaceholder'></div>
 
 </body>
 
 <script>
-	$(document).ready(function() {
+  $(document).ready(function() {
 
-		$(document).keypress(function(e) {
-			//      if ctrl alt p pressed --> toggle button and checkbox on top of page
-			if (e.altKey && e.ctrlKey && e.which === 254) {
-				$('#testdata').toggle();
-			}
-		})
+    $(document).keypress(function(e) {
+      //      if ctrl alt p pressed --> toggle button and checkbox on top of page
+      if (e.altKey && e.ctrlKey && e.which === 254) {
+        $('#testdata').toggle();
+      }
+    })
 
-	});
+  });
 
 </script>
 
