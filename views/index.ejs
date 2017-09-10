@@ -5,6 +5,7 @@
   <link rel='stylesheet' type='text/css' href='assets/style.css'>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.js'></script>
   <script src='assets/js/app.js'></script>
+  <script src='assets/js/download.js'></script>
   <link rel="icon" type="image/png" href="assets/atd.png" />
 </head>
 
@@ -36,6 +37,9 @@
   </div>
 
   <input type="button" value="Generate test cases ..." onclick="generateTestcases();" tabIndex='-1' />
+  <input type="button" value="Downlad test cases ..." onclick="downloadTestcases();" tabIndex='-1' />
+
+  <!--  <input type="button" value="Download test cases ..." onclick="downloadTestcases();" tabIndex='-1' />-->
   <p/>
   <input type="radio" name="strength" id="allValues">All values<br>
   <input type="radio" name="strength" id="allPairs" checked="checked">All pairs<br>
@@ -51,9 +55,13 @@
   $(document).ready(function() {
 
     $(document).keypress(function(e) {
-      //      if ctrl alt p pressed --> toggle button and checkbox on top of page
+      //      if ctrl alt t pressed --> toggle button and checkbox on top of page
       if (e.altKey && e.ctrlKey && e.which === 254) {
         $('#testdata').toggle();
+      }
+      //      if ctrl alt t pressed --> toggle test cases in download placeholder
+      if (e.altKey && e.ctrlKey && e.which === 254) {
+        $('#downloadPlaceholder').toggle();
       }
     })
 

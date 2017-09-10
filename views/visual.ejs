@@ -52,8 +52,8 @@
       }  
   %>
 
-	<h2>Test case visualization:</h2>
-	<svg width='100%' height=<%=y2LineValue + 15 %> >
+  <h2>Test case visualization:</h2>
+  <svg width='100%' height=<%=y2LineValue + 15 %> >
 <!-- 
   Categories and Data values 
 --> 
@@ -107,30 +107,30 @@
       
     </svg>
 
-	<!--
+  <!--
    cross ref test cases <> pairs
 -->
-	<% if(typeof testdata.pairs !== 'undefined'){ %>
+  <% if(typeof testdata.pairs !== 'undefined'){ %>
 
-		<h2>Cross reference:</h2>
-		<table>
-			<tr>
-				<th></th>
-				<% for(i=0; i<testdata.pairs.length; i++){  %>
-					<th>
-						<%= Object.keys(testdata.pairs[i])[0] %>:
-							<%= testdata.pairs[i][Object.keys(testdata.pairs[i])[0]] %>,
-								<%= [Object.keys(testdata.pairs[i])[1]] %>:
-									<%= testdata.pairs[i][Object.keys(testdata.pairs[i])[1]] %><br/>
-										<%= testdata.pairs[i].inTestcase %>
-					</th>
-					<% }; %>
-			</tr>
-			<% for(i=0; i<testdata.testcases.length; i++){  %>
-				<tr>
-					<td>Test case
-						<%= i + 1  %>
-							<% 
+    <h2>Cross reference:</h2>
+    <table>
+      <tr>
+        <th></th>
+        <% for(i=0; i<testdata.pairs.length; i++){  %>
+          <th>
+            <%= Object.keys(testdata.pairs[i])[0] %>:
+              <%= testdata.pairs[i][Object.keys(testdata.pairs[i])[0]] %>,
+                <%= [Object.keys(testdata.pairs[i])[1]] %>:
+                  <%= testdata.pairs[i][Object.keys(testdata.pairs[i])[1]] %><br/>
+                    <%= testdata.pairs[i].inTestcase %>
+          </th>
+          <% }; %>
+      </tr>
+      <% for(i=0; i<testdata.testcases.length; i++){  %>
+        <tr>
+          <td>Test case
+            <%= i + 1  %>
+              <% 
 //						console.log("Test case", i+1);
 						
 						var tc_nam1 = Object.keys(testdata.testcases[i]["testcase"])[0]; 
@@ -153,9 +153,9 @@
 						var tc_val5 = testdata.testcases[i]["testcase"][tc_nam5]; 
 //						console.log(tc_nam5, tc_val5);
 						%>
-					</td>
-					<% for(j=0; j<testdata.pairs.length; j++){  %>
-						<% 
+          </td>
+          <% for(j=0; j<testdata.pairs.length; j++){  %>
+            <% 
 						var p_nam1 = Object.keys(testdata.pairs[j])[0];
 						var p_val1 = testdata.pairs[j][p_nam1];
 //						console.log(p_nam1, p_val1);
@@ -166,8 +166,8 @@
 					
 //						console.log("---");
 						%>
-							<td>
-								<% 
+              <td>
+                <% 
 									if (((testdata.testcases[i]["testcase"][p_nam1] !== 'undefined') && (
 										testdata.testcases[i]["testcase"][p_nam1] === p_val1)) &&
 									   ((testdata.testcases[i]["testcase"][p_nam2] !== 'undefined') && (
@@ -176,17 +176,22 @@
 // 										console.log(testdata.testcases[i]["testcase"]); 
 //										console.log(testdata.pairs[j]);									
 								%>
-									<%= "X" %>
-										<% }; %>
-							</td>
-							<% }; %>
-				</tr>
+                  <%= "X" %>
+                    <% }; %>
+              </td>
+              <% }; %>
+        </tr>
 
-				<% }; %>
+        <% }; %>
 
-		</table>
-		<% }; %>
-			</br>
-			</br>
-			</br>
-			</br>
+    </table>
+    <% }; 
+    %>
+
+      </br>
+      </br>
+      </br>
+      </br>
+      <div id='downloadPlaceholder'>
+        <%= JSON.stringify(testdata.testcases) %>
+      </div>
