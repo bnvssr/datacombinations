@@ -29,10 +29,11 @@ exports.getTestcases = function (categories) {
 
       testdata[categories[j].name] = categories[j].value[x - 1];
     };
-    var testcase = {
-      "testcase": testdata
-    };
-    testcases.push(testcase);
+    //    var testcase = {
+    //      "testcase": testdata
+    //    };
+    testcases.push(testdata);
+    //    testcases.push(testcase);
   };
 
   return {

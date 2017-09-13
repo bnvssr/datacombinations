@@ -24,10 +24,11 @@ function addNextValueToTestcase(incompleteTestcase, testcases, categories, curre
         testdata[key] = incompleteTestcase[key];
       });
 
-      var testcase = {
-        "testcase": testdata
-      };
-      testcases.push(testcase);
+      //      var testcase = {
+      //        "testcase": testdata
+      //      };
+      //      testcases.push(testcase);
+      testcases.push(testdata);
 
     });
   }

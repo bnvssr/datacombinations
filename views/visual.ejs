@@ -93,7 +93,7 @@
         <% for(j=0; j<testdata.categories.length; j++){  %>
 		
 		
-         <circle cx="<%= getX([testdata.categories[j].name, testdata.testcases[i]["testcase"][testdata.categories[j].name]]) %>" cy="<%=yTestcase%>" r="<%=radius%>" />  
+         <circle cx="<%= getX([testdata.categories[j].name, testdata.testcases[i][testdata.categories[j].name]]) %>" cy="<%=yTestcase%>" r="<%=radius%>" />  
 >
 
         <% }; %>  // end circles loop
@@ -133,24 +133,24 @@
               <% 
 //						console.log("Test case", i+1);
 						
-						var tc_nam1 = Object.keys(testdata.testcases[i]["testcase"])[0]; 
-						var tc_val1 = testdata.testcases[i]["testcase"][tc_nam1]; 
+						var tc_nam1 = Object.keys(testdata.testcases[i])[0]; 
+						var tc_val1 = testdata.testcases[i][tc_nam1]; 
 //						console.log(tc_nam1, tc_val1);
 						
-						var tc_nam2 = Object.keys(testdata.testcases[i]["testcase"])[1]; 
-						var tc_val2 = testdata.testcases[i]["testcase"][tc_nam2]; 
+						var tc_nam2 = Object.keys(testdata.testcases[i])[1]; 
+						var tc_val2 = testdata.testcases[i][tc_nam2]; 
 //						console.log(tc_nam2, tc_val2);
 						
-						var tc_nam3 = Object.keys(testdata.testcases[i]["testcase"])[2]; 
-						var tc_val3 = testdata.testcases[i]["testcase"][tc_nam3]; 
+						var tc_nam3 = Object.keys(testdata.testcases[i])[2]; 
+						var tc_val3 = testdata.testcases[i][tc_nam3]; 
 //						console.log(tc_nam3, tc_val3);
 						
-						var tc_nam4 = Object.keys(testdata.testcases[i]["testcase"])[3]; 
-						var tc_val4 = testdata.testcases[i]["testcase"][tc_nam4]; 
+						var tc_nam4 = Object.keys(testdata.testcases[i])[3]; 
+						var tc_val4 = testdata.testcases[i][tc_nam4]; 
 //						console.log(tc_nam4, tc_val4);
 					
-						var tc_nam5 = Object.keys(testdata.testcases[i]["testcase"])[4]; 
-						var tc_val5 = testdata.testcases[i]["testcase"][tc_nam5]; 
+						var tc_nam5 = Object.keys(testdata.testcases[i])[4]; 
+						var tc_val5 = testdata.testcases[i][tc_nam5]; 
 //						console.log(tc_nam5, tc_val5);
 						%>
           </td>
@@ -168,10 +168,10 @@
 						%>
               <td>
                 <% 
-									if (((testdata.testcases[i]["testcase"][p_nam1] !== 'undefined') && (
-										testdata.testcases[i]["testcase"][p_nam1] === p_val1)) &&
-									   ((testdata.testcases[i]["testcase"][p_nam2] !== 'undefined') && (
-										testdata.testcases[i]["testcase"][p_nam2] === p_val2))
+									if (((testdata.testcases[i][p_nam1] !== 'undefined') && (
+										testdata.testcases[i][p_nam1] === p_val1)) &&
+									   ((testdata.testcases[i][p_nam2] !== 'undefined') && (
+										testdata.testcases[i][p_nam2] === p_val2))
 									   ){
 // 										console.log(testdata.testcases[i]["testcase"]); 
 //										console.log(testdata.pairs[j]);									

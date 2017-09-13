@@ -114,10 +114,11 @@ exports.getTestcases = function (categories) {
 
       pair.updateNbrInTestcase(testdata, pairs, 1);
 
-      var testcase = {
-        "testcase": testdata
-      };
-      testcases.push(testcase);
+      //      var testcase = {
+      //        "testcase": testdata
+      //      };
+      //      testcases.push(testcase);
+      testcases.push(testdata);
     }
   });
 
@@ -127,7 +128,7 @@ exports.getTestcases = function (categories) {
 
     var keepTestcase = false;
 
-    var pairsInTestcase = testcase["testcase"].getPairsInTestcase();
+    var pairsInTestcase = testcase.getPairsInTestcase();
     pairsInTestcase.map(function (pairInTestcase) {
       pairs.map(function (pair) {
         if (pairInTestcase.key1() === pair.key1() &&
@@ -141,7 +142,7 @@ exports.getTestcases = function (categories) {
     });
 
     if (!keepTestcase) {
-      pair.updateNbrInTestcase(testcase["testcase"], pairs, -1)
+      pair.updateNbrInTestcase(testcase, pairs, -1)
     };
     return keepTestcase;
   });
